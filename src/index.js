@@ -23,10 +23,6 @@ var app = angular
             });
         }
     ])
-    .controller('TestCtrl', ['$scope',
-        function($scope) {
-            $scope.testWord = 'abcde';
-        }
-    ]);
+    .controller('TestCtrl', require('./TestCtrl'));
 
 // angular.bootstrap(document.body, ['myApp']);
