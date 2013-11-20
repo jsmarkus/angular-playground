@@ -2,27 +2,29 @@
 'use strict';
 require('angular');
 require('angular-route');
+require('angular-sanitize');
 
 var app = angular
-    .module('myApp', ['ngRoute'])
+    .module('myApp', ['ngRoute', 'ngSanitize'])
     .config(['$routeProvider',
         function($routeProvider) {
             // Specify routes to load our partials upon the given URLs
-            $routeProvider.when('/', {
-                templateUrl: 'src/partials/testPartial.html',
-                controller: 'TestCtrl'
+            $routeProvider.when('/books', {
+                templateUrl: 'src/partials/booksView.html',
+                controller: 'BooksCtrl'
             });
-            $routeProvider.when('/view1', {
-                templateUrl: 'src/partials/partial1.html'
-            });
-            $routeProvider.when('/view2', {
-                templateUrl: 'src/partials/partial2.html'
+            $routeProvider.when('/book/:id', {
+                templateUrl: 'src/partials/bookView.html',
+                controller: 'BookCtrl'
             });
             $routeProvider.otherwise({
-                redirectTo: '/view1'
+                redirectTo: '/books'
             });
         }
     ])
-    .controller('TestCtrl', require('./TestCtrl'));
+    .directive('brFiction', require('./dirFb2'))
+    .controller('BooksCtrl', require('./BooksCtrl'))
+    .controller('BookCtrl', require('./BookCtrl'))
+    ;
 
 // angular.bootstrap(document.body, ['myApp']);

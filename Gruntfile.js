@@ -18,7 +18,8 @@ module.exports = function(grunt) {
       options: {
         alias : [
         './bower_components/angular/angular:angular',
-        './bower_components/angular-route/angular-route:angular-route'
+        './bower_components/angular-route/angular-route:angular-route',
+        './bower_components/angular-sanitize/angular-sanitize:angular-sanitize'
         ]
       },
       dev: {
